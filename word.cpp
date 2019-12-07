@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cctype>
 #include <stdexcept>
+#include <sstream>
 #include "word.h"
 
 char readFromStream(std::istream & in) {
@@ -44,5 +45,10 @@ std::ostream & Word::write(std::ostream &out) const {
 
 std::string Word::value() const {
     return word;
+}
+
+Word::Word(std::string word) {
+    std::istringstream stream{word};
+    this->read(stream);
 }
 

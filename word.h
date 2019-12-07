@@ -6,8 +6,8 @@
 #include <utility>
 
 struct Word {
-    explicit Word(std::string word) : word{std::move(word)} {};
-    Word() = default;
+    explicit Word(std::string word);
+    Word() : word{""} {};
 
     std::istream &read(std::istream &in);
 

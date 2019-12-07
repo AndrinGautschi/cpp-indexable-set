@@ -26,10 +26,21 @@ void test_word_input_separation() {
     ASSERT_EQUAL("put", word.value());
 }
 
+void test_empty_initialization() {
+    Word word{};
+    ASSERT_EQUAL("", word.value());
+}
+
+void test_word_construction_with_initial_word() {
+    Word word{"compl33tely"};
+    ASSERT_EQUAL("compl", word.value());
+}
+
 bool runAllTests(int argc, char const *argv[]) {
     cute::suite s{};
-
     s.push_back(CUTE(test_word_input_separation));
+    s.push_back(CUTE(test_empty_initialization));
+    s.push_back(CUTE(test_word_construction_with_initial_word));
     cute::xml_file_opener xmlfile(argc, argv);
     cute::xml_listener<cute::ide_listener<>> lis(xmlfile.out);
     auto runner{cute::makeRunner(lis, argc, argv)};
