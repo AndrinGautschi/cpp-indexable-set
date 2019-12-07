@@ -18,8 +18,8 @@ std::istream & Word::read(std::istream & in) {
     std::string readWord;
     while (!in.eof()) {
         const char current = readFromStream(in);
-        const bool isAlphabetic = std::isalpha(current);
-        const bool isSpace = std::isspace(current);
+        const int isAlphabetic = std::isalpha(current);
+        const int isSpace = std::isspace(current);
 
         // skip leading invalid chars
         if (readWord.length() == 0 && !isAlphabetic) {
@@ -47,7 +47,7 @@ std::string Word::value() const {
     return word;
 }
 
-Word::Word(std::string word) {
+Word::Word(const std::string & word) {
     std::istringstream stream{word};
     this->read(stream);
 }

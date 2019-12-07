@@ -6,14 +6,14 @@
 #include <utility>
 
 struct Word {
-    explicit Word(std::string word);
+    explicit Word(const std::string & word);
     Word() : word{""} {};
 
     std::istream &read(std::istream &in);
 
     std::ostream &write(std::ostream &out) const;
 
-    std::string value() const;
+    [[nodiscard]] std::string value() const;
 
 private:
     std::string word;
