@@ -15,25 +15,21 @@ struct indexableSet : std::set<T, COMPARE> {
     using reference = typename container::reference;
     using const_reference = typename container::const_reference;
 
-    T at(int index) {
+    const_reference at(int index) const {
         if (index < 0) index = this->size() + index;
         if (index >= this->size() || index < 0) throw std::out_of_range("Index too big");
         return *(std::next(this->begin(), index));
     }
 
-    T front() {
+    const_reference front() const {
         return this->at(0);
     }
 
-    T back() {
+    const_reference back() const {
         return this->at(-1);
     }
 
-    T operator[](int index) {
-        return this->at(index);
-    }
-
-    const T operator[](int index) const {
+    const_reference operator[](int index) const {
         return this->at(index);
     }
 };
